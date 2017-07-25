@@ -1,0 +1,23 @@
+<!--index.wxml-->
+<view class='container'>
+  <view >
+    <text catchtap="click" class="{{color}}">
+    {{motto}}
+    </text>
+  </view>
+
+<view class="section">
+
+</view>
+<view class="section">
+  <view class="section__title">
+  输入：{{inputValue}}
+  </view>
+  <input  maxlength="10" type="digit" 
+  bindinput="bindKeyInput" placeholder="输入同步到view中" />
+</view>
+
+
+
+
+</view>
