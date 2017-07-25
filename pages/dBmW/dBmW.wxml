@@ -1,0 +1,13 @@
+<view class="section">
+  <view class="section__title">
+  {{inputValue1}} dBm =>  {{outputValue1}} W
+  </view>
+  <input  type="digit" bindinput="calcdBmW" maxlength="5"          placeholder="dBm换算为W" auto-focus/>
+</view>
+
+<view class="section">
+  <view class="section__title">
+  {{inputValue2}} W => {{outputValue2}} dBm
+  </view>
+  <input  type="digit" bindinput="calcWdBm" maxlength="5"          placeholder="W换算为dBm" />
+</view>
