@@ -34,21 +34,3 @@
    placeholder="上行Earfcn换算为频率" />
   </view>
 </view>
-<view class="section" >
-  <view >
-  {{myEarfcnHz}} MHz / Band: {{myEarfcnId}} => {{inputEarfcn}} Earfcn
-  </view>
-  <view >
-  <input  type="digit" bindinput="getEarfcndl" maxlength="5"         
-   placeholder="下行频率换算为频点" />
-  </view>
-</view>
-<view class="section" >
-  <view >
-   {{myEarfcnHzul}} MHz / Band: {{myEarfcnIdul}} => {{inputEarfcnul}} Earfcn 
-  </view>
-  <view >
-  <input  type="digit" bindinput="getEarfcnul" maxlength="5"         
-   placeholder="上行频率换算为频点" />
-  </view>
-</view>
