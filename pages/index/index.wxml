@@ -1,7 +1,9 @@
 <!--index.wxml-->
 <view class='container'>
   <view >
-    <text catchtap="click" class="{{color}}">Hello world</text>
+    <text catchtap="click" class="{{color}}">
+    {{motto}}
+    </text>
   </view>
 
 <view class="section">
