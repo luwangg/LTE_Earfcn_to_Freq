@@ -1,36 +1,57 @@
 <view class="section">
 </view>
-<view class="section">
-  <view class="section__title">
-  {{inputValue1}} dBm =>  {{outputValue1}} W
+
+<view class="section__title">
+  <view class="section__item">
+    dBm
   </view>
-  <input  type="digit" bindinput="calcdBmW" maxlength="3"         
-   placeholder="dBm换算为W" auto-focus/>
+
+  <input value="{{inputValue1}}" type="digit" bindinput="calcdBmW" maxlength="-1" placeholder="" auto-focus/>
+</view>
+<view class="section__title">
+  <view class="section__item">
+    W
+  </view>
+  <input value="{{outputValue1}}" type="digit" bindinput="calcWdBm" maxlength="-1" placeholder="" />
 </view>
 
-<view class="section">
-  <view class="section__title">
-  {{inputValue2}} W => {{outputValue2}} dBm
-  </view>
-  <input  type="digit" bindinput="calcWdBm" maxlength="3"         
-   placeholder="W换算为dBm" />
+
+<view class="demo_line_01">
 </view>
 
-<view class="section" >
-  <view >
-  {{inputEarfcn}} Earfcn => {{myEarfcnHz}} MHz / Band: {{myEarfcnId}} 
+
+
+<view class="section__title">
+  <view class="section__item">
+    Earfcn
   </view>
-  <view >
-  <input  type="digit" bindinput="getEarfcndl" maxlength="5"         
-   placeholder="下行Earfcn换算为频率" />
+  <view>
+    <picker bindchange="bindPickerChange" value="{{index}}" range="{{DUL}}">
+      <view class="picker">
+        {{DUL[index]}}
+      </view>
+    </picker>
+  </view>
+  <view class="section__title">
+    <input type="digit" bindinput="calcEarfcn" maxlength="5" placeholder="输入频点" placeholder-class="placeholder" />
   </view>
 </view>
-<view class="section" >
-  <view >
-  {{inputEarfcnul}} Earfcn => {{myEarfcnHzul}} MHz / Band: {{myEarfcnIdul}} 
+
+<view class="section__title">
+  <view class="section__item2">
+    Freq(MHz) {{myEarfcnHz}}
   </view>
-  <view >
-  <input  type="digit" bindinput="getEarfcnul" maxlength="5"         
-   placeholder="上行Earfcn换算为频率" />
+  <view> {{inputValue2}} </view>
+  <view class="section__item2">
+    Band: {{myEarfcnId}}
   </view>
+  <view> {{inputValue2}} </view>
 </view>
+
+
+
+
+<view class="section__title">
+</view>
+
+

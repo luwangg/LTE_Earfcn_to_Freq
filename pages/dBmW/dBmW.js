@@ -45,20 +45,22 @@ var EarfcnIds = [
 ]
 Page({
     data:{
-        text:"dBm_W换算",
-        inputValue1:'',
-        outputValue1: '',
-        inputValue2:'',
-        outputValue2:'',
+      DUL: ['DL', 'UL'],
+      index: 0,
+      text:"dBm_W换算",
+      inputValue1:'',
+      outputValue1: '',
+      inputValue2:'',
+      outputValue2:'',
 
-        inputEarfcn:'',
-        myEarfcnHz: '',
-        myEarfcnId: '',
+      inputEarfcn:'',
+      myEarfcnHz: '',
+      myEarfcnId: '',
 
 
-        inputEarfcnul: '',
-        myEarfcnHzul: '',
-        myEarfcnIdul: '',
+      inputEarfcnul: '',
+      myEarfcnHzul: '',
+      myEarfcnIdul: '',
     },
     onShareAppMessage: function (res) {
       if (res.from === 'button') {
@@ -76,7 +78,7 @@ Page({
         }
       }
     },
-
+    
     onLoad: function () {
       console.log('onLoad_dBm')
       var that = this
@@ -118,18 +120,77 @@ Page({
           b = '';
         }
         that.setData({
-            inputValue2: a,
-            outputValue2: b
+            inputValue1: b,
+            outputValue1: a
         })
     },
-    getEarfcndl: function (e) {
+    bindPickerChange: function (e) {
+      var that = this
+      console.log('picker发送选择改变，携带值为', e.detail.value)
+      var idx = e.detail.value
+      
+      var evalue = that.data.inputEarfcn
+      
+      
+      that.calcEarfcnOne(evalue, idx)
+      that.setData({
+        index: idx
+      })
+    },
+    calcEarfcn:function(e){
+      var that = this
+      var idx =that.data.index;
+      //console.log('idx:' + idx);
+      var eValue = e.detail.value 
+      that.calcEarfcnOne(eValue,idx)
+    },
+
+    calcEarfcnOne:function(eValue,idx){
+      var that = this
+      var a = '', b = {};
+      var c={};
+      if (eValue != "") {
+        if (idx == 0) {
+          a = eValue;
+          b = that.getEarfcnDl_id(a);
+          c["Hz"]=b["FDL"]
+          c["BandId"]=b["bandid"]
+        }
+        if (idx == 1 && parseInt(eValue) > 18000) {
+          a = eValue;
+          b = that.getEarfcnUl_id(a);
+          c["Hz"] = b["FUL"]
+          c["BandId"] = b["bandid"]
+        } 
+        if (c["Hz"]!=undefined){
+          that.setData({
+            inputEarfcn: a,
+            myEarfcnHz: c["Hz"],
+            myEarfcnId: c["BandId"]
+          })
+        } else {
+          that.setData({
+            inputEarfcn: a,
+            myEarfcnHz: '',
+            myEarfcnId: ''
+          })
+        }
+      } else {
+        that.setData({
+          myEarfcnHz: '',
+          myEarfcnId: ''
+        })
+      }
+      
+    },
+    getEarfcnDl: function (e) {
       //console.log('getEarfcn');
       var that = this
       var a='',b={};
 
       if(e.detail.value != "") {
         a = e.detail.value;
-        b = this.getEarfcndl_id(a);
+        b = this.getEarfcnDl_id(a);
         that.setData({
           inputEarfcn: a,
           myEarfcnHz: b["FDL"],
@@ -144,7 +205,7 @@ Page({
       }
       //console.log(b);
     },
-    getEarfcndl_id:function(earfcn){
+    getEarfcnDl_id:function(earfcn){
 
       var ret = {};
       for (var i in EarfcnIds){
@@ -162,8 +223,8 @@ Page({
       }
       return ret;
     },
-    getEarfcnul: function (e) {
-      console.log('getEarfcnul');
+    getEarfcnUl: function (e) {
+      console.log('getEarfcnUl');
       var that = this
       var a = '', b = {};
       if (e.detail.value != "" && parseInt(e.detail.value)>18000) {

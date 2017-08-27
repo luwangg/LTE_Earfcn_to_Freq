@@ -27,4 +27,17 @@ App({
   globalData:{
     userInfo:null
   }
+  /*
+  app.json
+  ,
+  "tabBar": {
+    "list": [ {
+      "pagePath": "pages/dBmW/dBmW",
+      "text": "常用换算"
+    },{
+      "pagePath": "pages/logs/logs",
+      "text": "logs"
+    }]
+  }
+  */
 })
