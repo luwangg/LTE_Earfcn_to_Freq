@@ -43,6 +43,12 @@ var EarfcnIds = [
   { "E-UTRANOperatingBand": "43", "F_DL_low(MHz)": "3600", "Noffs_DL": "43590", "NDL_min": "43590", "NDL_max": "45589", "F_UL_low(MHz)": "3600", "Noffs_UL": "43590", "NUL_min": "43590", "NUL_max": "45589", "FDL_min": "3600", "FDL_max": "3799.9", "FUL_min": "3600", "FUL_max": "3799.9" },
   { "E-UTRANOperatingBand": "44", "F_DL_low(MHz)": "703", "Noffs_DL": "45590", "NDL_min": "45590", "NDL_max": "46589", "F_UL_low(MHz)": "703", "Noffs_UL": "45590", "NUL_min": "45590", "NUL_max": "46589", "FDL_min": "703", "FDL_max": "802.9", "FUL_min": "703", "FUL_max": "802.9" },
 ]
+var DEFBand = {
+  "2585": "D1", "2604.8": "D2", "2624.6": "D3",
+  "1895": "F1", "1909.4": "F2","1904.6":"FG",
+  "2330": "E1", "2349.8": "E2", "2364.2": "E3"}
+
+
 Page({
     data:{
       DUL: ['DL', 'UL'],
@@ -56,11 +62,13 @@ Page({
       inputEarfcn:'',
       myEarfcnHz: '',
       myEarfcnId: '',
-
+      myEarfcnId: '',
 
       inputEarfcnul: '',
       myEarfcnHzul: '',
       myEarfcnIdul: '',
+
+      DEFname:'',
     },
     onShareAppMessage: function (res) {
       if (res.from === 'button') {
@@ -90,6 +98,23 @@ Page({
         })
       })
     } ,
+
+    calcDEF:function (currHz) {
+      var that = this;
+      var curr = currHz.toString();
+      var tmp ="";
+      if (curr != undefined) {
+        tmp = DEFBand[curr];
+      } else {
+        tmp = '';
+      }
+      if (tmp==undefined){
+        tmp = '';
+      }
+      return tmp;
+      //console.log(tmp)
+    } ,
+
     calcdBmW: function(e) {
         var that = this;
         var a,b;
@@ -163,22 +188,26 @@ Page({
           c["BandId"] = b["bandid"]
         } 
         if (c["Hz"]!=undefined){
+          var DEF=that.calcDEF(c["Hz"]);
           that.setData({
             inputEarfcn: a,
             myEarfcnHz: c["Hz"],
-            myEarfcnId: c["BandId"]
+            myEarfcnId: c["BandId"],
+            DEFname:DEF
           })
         } else {
           that.setData({
             inputEarfcn: a,
             myEarfcnHz: '',
-            myEarfcnId: ''
+            myEarfcnId: '',
+            DEFname: ''
           })
         }
       } else {
         that.setData({
           myEarfcnHz: '',
-          myEarfcnId: ''
+          myEarfcnId: '',
+          DEFname: ''
         })
       }
       

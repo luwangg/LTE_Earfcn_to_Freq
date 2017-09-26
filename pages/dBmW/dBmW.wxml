@@ -1,11 +1,17 @@
-<view class="section">
+
+<view class="line_01">
+  <view class="line__title">
+    dBm W转换
+  </view>
+</view>
+<view class="line__space">
+
 </view>
 
 <view class="section__title">
   <view class="section__item">
     dBm
   </view>
-
   <input value="{{inputValue1}}" type="digit" bindinput="calcdBmW" maxlength="-1" placeholder="" auto-focus/>
 </view>
 <view class="section__title">
@@ -16,42 +22,46 @@
 </view>
 
 
-<view class="demo_line_01">
+<view class="line_01">
+  <view class="line__title">
+    频点换算
+  </view>
 </view>
+<view class="line__space">
 
-
-
+</view>
 <view class="section__title">
   <view class="section__item">
     Earfcn
   </view>
-  <view>
+  
     <picker bindchange="bindPickerChange" value="{{index}}" range="{{DUL}}">
       <view class="picker">
         {{DUL[index]}}
       </view>
     </picker>
-  </view>
-  <view class="section__title">
+
+
+  <view class="section__item">
     <input type="digit" bindinput="calcEarfcn" maxlength="5" placeholder="输入频点" placeholder-class="placeholder" />
   </view>
 </view>
 
 <view class="section__title">
   <view class="section__item2">
-    Freq(MHz) {{myEarfcnHz}}
+  Freq(MHz): {{myEarfcnHz}}
   </view>
-  <view> {{inputValue2}} </view>
-  <view class="section__item2">
-    Band: {{myEarfcnId}}
+  
+  <view class="section__item3">
+  Band:{{myEarfcnId}}
   </view>
-  <view> {{inputValue2}} </view>
+  <view class="section__item3">
+  {{DEFname}}
+  </view>
+    
+
 </view>
 
+<view class="line_01">
 
-
-
-<view class="section__title">
 </view>
-
-
