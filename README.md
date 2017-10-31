@@ -1,6 +1,8 @@
-# weixin
-小程序
-目前只完成了2个计算：
+# LTETools
+wechat liteApp
 
-1、dBm W换算
-2、频点换算
+1、dBm W
+2、LTE Earfcn to Freq(MHz) & BandID 
+
+# Screenshots
+![image](https://github.com/JenneyHuang/weixin/raw/master/pages/pic/sample.png)
