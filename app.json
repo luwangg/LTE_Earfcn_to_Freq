@@ -1,9 +1,6 @@
 {
   "pages":[
-    "pages/dBmW/dBmW",
-    "pages/logs/logs",
-    "pages/index/index"
-
+    "pages/dBmW/dBmW"
   ],
   "window":{
     "backgroundTextStyle":"light",
