@@ -108,7 +108,7 @@ Page({
         //console.log(e);
         if(e.detail.value != ""){
           a = e.detail.value;
-          b = Math.round(Math.pow(10, (a / 10)) / 1000*10000)/10000;
+          b = Math.round(Math.pow(10, (a / 10)) / 1000 * 1000000000)/1000000000;
         }
         else{
           a = '';
@@ -125,7 +125,7 @@ Page({
         var a,b;
         if(e.detail.value != ""){
           a = e.detail.value;
-          b = Math.round(10 * Math.log10(a * 1000)*10000)/10000;
+          b = Math.round(10 * Math.log10(a * 1000) * 1000000000) / 1000000000;
           //b = b.toFixed(4)
         }else{
           a = '';

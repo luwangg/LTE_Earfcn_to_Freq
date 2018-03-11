@@ -12,13 +12,13 @@
   <view class="section__item">
     dBm
   </view>
-  <input value="{{inputValue1}}" type="digit" bindinput="calcdBmW" maxlength="-1" placeholder="" auto-focus/>
+  <input value="{{inputValue1}}" type="text" bindinput="calcdBmW" maxlength="-1" placeholder="" auto-focus/>
 </view>
 <view class="section__title">
   <view class="section__item">
     W
   </view>
-  <input value="{{outputValue1}}" type="digit" bindinput="calcWdBm" maxlength="-1" placeholder="" />
+  <input value="{{outputValue1}}" type="text" bindinput="calcWdBm" maxlength="-1" placeholder="" />
 </view>
 
 
